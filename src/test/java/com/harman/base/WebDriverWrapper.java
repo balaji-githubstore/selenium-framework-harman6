@@ -17,7 +17,7 @@ public class WebDriverWrapper {
 	@BeforeMethod
 	public void setup() {
 
-		String browserName = "ff";
+		String browserName = "ch";
 
 		if (browserName.equalsIgnoreCase("edge")) {
 			WebDriverManager.edgedriver().setup();
