@@ -14,6 +14,8 @@ public class WebDriverWrapper {
 
 	@BeforeMethod
 	public void setup() {
+		
+
 		WebDriverManager.chromedriver().setup();
 
 		driver = new ChromeDriver();

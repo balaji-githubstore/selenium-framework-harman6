@@ -6,6 +6,7 @@ import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
 import com.harman.base.WebDriverWrapper;
+import com.harman.utilities.DataUtils;
 
 public class LoginTest extends WebDriverWrapper {
 
@@ -20,21 +21,7 @@ public class LoginTest extends WebDriverWrapper {
 		Assert.assertEquals(actualUrl, "https://opensource-demo.orangehrmlive.com/index.php/dashboard");
 	}
 
-	@DataProvider
-	public String[][] invalidCredentialData() {
-		String[][] main = new String[2][3];
-		main[0][0] = "john";
-		main[0][1] = "john123";
-		main[0][2] = "Invalid credentials";
-
-		main[1][0] = "peter";
-		main[1][1] = "peter123";
-		main[1][2] = "Invalid credentials";
-
-		return main;
-	}
-
-	@Test(dataProvider = "invalidCredentialData")
+	@Test(dataProviderClass = DataUtils.class,dataProvider = "invalidCredentialData")
 	public void invalidCredentialTest(String username, String password, String expectedError) {
 		driver.findElement(By.id("txtUsername")).sendKeys(username);
 		driver.findElement(By.id("txtPassword")).sendKeys(password);
